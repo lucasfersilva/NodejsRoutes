@@ -9,8 +9,13 @@ module.exports = {
         res.json({message:"Lista um usuário"})
     }, 
     async store(res,res){
-        return
-        res.json({message:"Grava um usuario"})
+        const{nome, email, senha}= req.body
+        const usuarios= await User.create({
+            nome, 
+            email, 
+            senha
+        })
+        return res.json(usuarios)
     },
     async update(req,res){
         return res.json({message: "altera um usuario"})
